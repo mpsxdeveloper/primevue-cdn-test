@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrimeVue Demo</title>
+    <link href="https://unpkg.com/primevue@^3/resources/themes/nova-vue/theme.css" rel="stylesheet" />
+    <link href="https://unpkg.com/primevue/resources/primevue.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/primeicons/primeicons.css" rel="stylesheet">
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/primevue/core/core.min.js"></script>
+    <script src="https://unpkg.com/primevue/slider/slider.min.js"></script>
+    <script src="https://unpkg.com/primevue@^3/inputmask/inputmask.min.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <p-slider v-model="val"></p-slider><br /><br />
+        <p-inputmask mask="99-999999" v-model="val1" placeholder="99-999999"></p-inputmask><br /><br />
+        <p-button label="Submit" @click="teste"></p-button><br /><br />
+        <h6>{{val}}</h6>
+    </div>
+
+    <script>
+        const {createApp, ref} = Vue;
+
+        const App = {
+            setup() {
+                const val = ref(null);
+
+                return {
+                    val
+                };
+            },
+            components: {
+                'p-slider': primevue.slider,
+                'p-inputmask': primevue.inputmask,
+                "p-button": primevue.button
+            },
+            methods: {
+                teste() {
+                    alert('Hello, PrimeVue');
+                }
+            }
+        };
+
+        createApp(App).use(primevue.config.default).mount("#app");
+    </script>
+
+</body>
+
+</html>
